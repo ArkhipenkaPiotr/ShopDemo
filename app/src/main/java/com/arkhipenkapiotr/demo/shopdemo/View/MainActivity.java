@@ -1,7 +1,9 @@
-package com.arkhipenkapiotr.demo.shopdemo;
+package com.arkhipenkapiotr.demo.shopdemo.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.arkhipenkapiotr.demo.shopdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 
