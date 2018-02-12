@@ -12,21 +12,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class App extends Application {
 
     private Retrofit retrofit;
-    private static ShopAPI shopAPI;
+    private static ShopAPI shopAPI = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/")
+                .baseUrl("http://192.168.180.4:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         shopAPI = retrofit.create(ShopAPI.class);
     }
 
-    public ShopAPI Api(){
+    public static ShopAPI getApi(){
         return shopAPI;
     }
 }

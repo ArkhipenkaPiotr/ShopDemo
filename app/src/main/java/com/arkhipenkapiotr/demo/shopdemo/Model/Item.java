@@ -1,7 +1,5 @@
 package com.arkhipenkapiotr.demo.shopdemo.Model;
 
-import java.util.Set;
-
 public class Item {
 
     private Long id;
