@@ -1,5 +1,6 @@
 package com.arkhipenkapiotr.demo.shopdemo.View;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.arkhipenkapiotr.demo.shopdemo.App;
 import com.arkhipenkapiotr.demo.shopdemo.Model.Item;
 import com.arkhipenkapiotr.demo.shopdemo.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,9 +120,9 @@ public class ItemsListFragment extends Fragment {
                 //загрузить фотку
                 this.item = item;
                 //'Cannot resolve symbol 'Picasso' i don't know why
-//                Picasso.with(getContext())
-//                        .load(item.getPhotoUrl())
-//                        .into(photoImageView);
+                Picasso.with(getContext())
+                        .load(item.getPhotoUrl())
+                        .into(photoImageView);
                 nameTextView.setText(item.getName());
                 priceTextView.setText(String.valueOf(item.getPrice()));
 
@@ -129,13 +131,26 @@ public class ItemsListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(getContext())
-                        .setTitle("Description")
+                        .setTitle(getResources().getString(R.string.description))
                         .setMessage(item.getDescription())
-                        .setPositiveButton("Заказать",null)
-                        .setNegativeButton("Вернуться", null)
+                        .setPositiveButton(getResources().getString(R.string.make_an_order),getPositiveButtonOnClickListener(item))
+                        .setNegativeButton(getResources().getString(R.string.order), null)
                         .create()
                         .show();
             }
         }
+    }
+
+    private DialogInterface.OnClickListener getPositiveButtonOnClickListener(final Item item){
+        DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, OrderMakerFragment.newInstance(item))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        };
+        return onClickListener;
     }
 }

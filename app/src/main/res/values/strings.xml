@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ShopDemo</string>
+    <string name="make_an_order">Make an order</string>
+    <string name="phone">Phone</string>
+    <string name="e_mail">E - Mail</string>
+    <string name="description">Description</string>
+    <string name="back">Back</string>
+    <string name="order">Order</string>
+    <string name="thanks_for_your_order">Thanks for your order</string>
+    <string name="server_error">Server error! Please, try later</string>
 </resources>

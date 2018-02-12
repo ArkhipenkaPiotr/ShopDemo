@@ -1,6 +1,8 @@
 package com.arkhipenkapiotr.demo.shopdemo.Model;
 
-public class ItemOrder {
+import java.io.Serializable;
+
+public class ItemOrder implements Serializable {
 
     private Long id;
 
