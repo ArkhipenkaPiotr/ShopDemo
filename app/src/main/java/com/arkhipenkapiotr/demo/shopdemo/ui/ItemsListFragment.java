@@ -139,13 +139,7 @@ public class ItemsListFragment extends MvpAppCompatFragment implements ItemListV
 
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle(getResources().getString(R.string.description))
-                        .setMessage(item.getDescription())
-                        .setPositiveButton(getResources().getString(R.string.make_an_order),getPositiveButtonOnClickListener(item))
-                        .setNegativeButton(getResources().getString(R.string.order), null)
-                        .create()
-                        .show();
+                getDescriptionDialog(item).show();
             }
         }
     }
@@ -161,5 +155,14 @@ public class ItemsListFragment extends MvpAppCompatFragment implements ItemListV
             }
         };
         return onClickListener;
+    }
+
+    private AlertDialog getDescriptionDialog(Item item){
+        return new AlertDialog.Builder(getContext())
+                .setTitle(getResources().getString(R.string.description))
+                .setMessage(item.getDescription())
+                .setPositiveButton(getResources().getString(R.string.make_an_order),getPositiveButtonOnClickListener(item))
+                .setNegativeButton(getResources().getString(R.string.back), null)
+                .create();
     }
 }
