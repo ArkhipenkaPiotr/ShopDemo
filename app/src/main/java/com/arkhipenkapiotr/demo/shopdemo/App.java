@@ -19,7 +19,7 @@ public class App extends Application {
         super.onCreate();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.180.4:8080/")
+                .baseUrl("http://192.168.42.236:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

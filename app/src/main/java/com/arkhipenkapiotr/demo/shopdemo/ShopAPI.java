@@ -1,7 +1,7 @@
 package com.arkhipenkapiotr.demo.shopdemo;
 
-import com.arkhipenkapiotr.demo.shopdemo.Model.Item;
-import com.arkhipenkapiotr.demo.shopdemo.Model.ItemOrder;
+import com.arkhipenkapiotr.demo.shopdemo.model.Item;
+import com.arkhipenkapiotr.demo.shopdemo.model.ItemOrder;
 
 import java.util.List;
 

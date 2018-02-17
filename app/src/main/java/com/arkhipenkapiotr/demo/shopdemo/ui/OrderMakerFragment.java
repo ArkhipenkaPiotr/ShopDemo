@@ -1,4 +1,4 @@
-package com.arkhipenkapiotr.demo.shopdemo.View;
+package com.arkhipenkapiotr.demo.shopdemo.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +12,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.arkhipenkapiotr.demo.shopdemo.App;
-import com.arkhipenkapiotr.demo.shopdemo.Model.Item;
-import com.arkhipenkapiotr.demo.shopdemo.Model.ItemOrder;
+import com.arkhipenkapiotr.demo.shopdemo.model.Item;
+import com.arkhipenkapiotr.demo.shopdemo.model.ItemOrder;
 import com.arkhipenkapiotr.demo.shopdemo.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,9 +30,16 @@ import retrofit2.Response;
 public class OrderMakerFragment extends Fragment {
     private static final String ITEM_KEY = "item_key";
 
+    @BindView(R.id.fragment_order_maker_email_edit_text)
     private EditText eMailEditText;
+
+    @BindView(R.id.fragment_order_maker_phone_edit_text)
     private EditText phoneEditText;
+
+    @BindView(R.id.fragment_order_maker_send_button)
     private Button sendButton;
+
+    @BindView(R.id.fragment_order_maker_progress_bar)
     private ProgressBar progressBar;
 
     private ItemOrder itemOrder;
@@ -60,37 +70,32 @@ public class OrderMakerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order_maker,container,false);
 
-        eMailEditText = view.findViewById(R.id.fragment_order_maker_email_edit_text);
-        phoneEditText = view.findViewById(R.id.fragment_order_maker_phone_edit_text);
-        sendButton = view.findViewById(R.id.fragment_order_maker_send_button);
-        progressBar = view.findViewById(R.id.fragment_order_maker_progress_bar);
-
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-
-                itemOrder.seteMail(eMailEditText.getText().toString());
-                itemOrder.setPhone(phoneEditText.getText().toString());
-
-                App.getApi().postOrder(itemOrder).enqueue(new Callback<ItemOrder>() {
-                    @Override
-                    public void onResponse(Call<ItemOrder> call, Response<ItemOrder> response) {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getContext(), getResources().getString(R.string.thanks_for_your_order), Toast.LENGTH_SHORT).show();
-                        popFragment();
-                    }
-
-                    @Override
-                    public void onFailure(Call<ItemOrder> call, Throwable t) {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getContext(), getResources().getString(R.string.order), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+        ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @OnClick(R.id.fragment_order_maker_send_button)
+    public void sendOrder(){
+        progressBar.setVisibility(View.VISIBLE);
+
+        itemOrder.seteMail(eMailEditText.getText().toString());
+        itemOrder.setPhone(phoneEditText.getText().toString());
+
+        App.getApi().postOrder(itemOrder).enqueue(new Callback<ItemOrder>() {
+            @Override
+            public void onResponse(Call<ItemOrder> call, Response<ItemOrder> response) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), getResources().getString(R.string.thanks_for_your_order), Toast.LENGTH_SHORT).show();
+                popFragment();
+            }
+
+            @Override
+            public void onFailure(Call<ItemOrder> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), getResources().getString(R.string.order), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void popFragment(){

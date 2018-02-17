@@ -1,4 +1,4 @@
-package com.arkhipenkapiotr.demo.shopdemo.Model;
+package com.arkhipenkapiotr.demo.shopdemo.model;
 
 import java.io.Serializable;
 
