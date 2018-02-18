@@ -5,20 +5,21 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <EditText
-        style="@style/TextStyle"
         android:id="@+id/fragment_order_maker_email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
         android:layout_marginTop="60dp"
         android:hint="@string/e_mail"
-        />
+        android:inputType="textEmailAddress"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp" />
 
     <EditText
-        style="@style/TextStyle"
         android:id="@+id/fragment_order_maker_phone_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
         android:layout_below="@id/fragment_order_maker_email_edit_text"
         android:inputType="phone"
         android:layout_marginTop="20dp"
@@ -27,10 +28,14 @@
         />
 
     <Button
-        style="@style/ButtonStyle"
         android:id="@+id/fragment_order_maker_send_button"
+        android:background="?attr/colorPrimaryDark"
         android:layout_width="wrap_content"
+        android:minWidth="88dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_centerHorizontal="true"
+        android:textColor="?attr/colorAccent"
         android:layout_height="wrap_content"
         android:layout_below="@id/fragment_order_maker_phone_edit_text"
         android:layout_marginTop="35dp"

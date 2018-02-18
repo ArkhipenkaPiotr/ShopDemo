@@ -19,7 +19,7 @@ public class App extends Application {
         super.onCreate();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://da8ce793.ngrok.io/")
+                .baseUrl("http://d2e86839.ngrok.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

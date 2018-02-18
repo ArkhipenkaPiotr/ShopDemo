@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
-    style="@style/CardStyle"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:layout_margin="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            style="@style/ImageViewStyle"
             android:id="@+id/item_item_list_image_view"
             android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_alignParentStart="true"/>
+            android:layout_width="150dp"
+            android:scaleType="center"
+            tools:src = "@drawable/sample"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/item_item_list_name_text_view"
@@ -26,7 +31,8 @@
             tools:text="Item Name"
 
             android:layout_marginTop="50dp"
-            android:textSize="25sp"
+            android:layout_marginEnd="15dp"
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"
             android:textAlignment="center"/>
 
         <TextView
@@ -34,11 +40,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/item_item_list_image_view"
+            android:textAppearance="?attr/textAppearanceSearchResultSubtitle"
             android:layout_below="@id/item_item_list_name_text_view"
             tools:text="Price"
 
             android:layout_marginTop="20dp"
-            android:textSize="30sp"
             android:textAlignment="center"/>
     </RelativeLayout>
 
